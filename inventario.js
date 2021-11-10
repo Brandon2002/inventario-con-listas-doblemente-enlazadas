@@ -22,8 +22,9 @@ export default class Inventario{
             prod._next = producto
             prod._next._anterior = prod;
         }
-        let detalles = document.getElementById('productosHtml');
-        detalles.innerHTML += producto.listarProd();
+
+        // let detalles = document.getElementById('productosHtml');
+        // detalles.innerHTML += producto.listarProd();
     }
 
 
@@ -98,25 +99,7 @@ export default class Inventario{
                 prod = prod._next;
                 list = list + prod.listarProd();
             }
-            // console.log(list);
-
-            // let detalles = document.getElementsByClassName('productosHtml');
-            // console.log(detalles);
-            // detalles.innerHTML += list;
-
-            // let block_to_insert;
-            // let container_block;
-
-            // block_to_insert = document.createElement( 'div' );
-            // block_to_insert.classList.add("products");
-
-            // block_to_insert.innerHTML = list;
-
-            // console.log(block_to_insert);
-
-            // container_block = document.getElementsByClassName('productosHtml');
-
-            // container_block.appendChild(block_to_insert);
+           
 
 
 
@@ -127,6 +110,16 @@ export default class Inventario{
 
     listarConsole() {
         return this._inicio;
+    }
+
+    getList() {
+        let list = [];
+        let current = this._inicio;
+        while (current) {
+            list.push(current);
+            current = current._next;
+        }
+        return list;
     }
 
 }

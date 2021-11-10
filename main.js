@@ -38,6 +38,7 @@ btnAdd.addEventListener('click',()=>{
 
         let producto = new Product(id, nombre, cantidad, costo);
         in1.añadir(producto);
+        listarHtml(in1.getList());
         max++;
         
     }
@@ -59,7 +60,7 @@ btnB.addEventListener('click',()=>{
         
     }
     console.log(in1.listarConsole());
-    });
+});
 
 const btnE = document.getElementById('btnE');
 btnE.addEventListener('click',()=>{
@@ -75,20 +76,64 @@ btnE.addEventListener('click',()=>{
             
     }
     console.log(in1.listarConsole());
+    listarHtml(in1.getList());
     });
 
 const btnR = document.getElementById('btnR');
 btnR.addEventListener('click',()=>{
 
-    
+    listarHtml(in1.getList());
 
 });
 
-// function limpiar(){
-//     const array = document.getElementsByClassName('productosHtml');
-//     while(array.length > 0){
-//         array[0].parentNode.removeChild(array[0]);
-//         }
-//         return;
-// }
+const btnRI = document.getElementById('btnRI');
+btnRI.addEventListener('click',()=>{
+    
+    listarHtmlReversed(in1.getList());
+
+});
+
+const listarHtml = (products) => {
+
+    deleteHtmlList();
+    let block_to_insert;
+    let container_block;
+     
+    products.forEach(element => {
+            block_to_insert = document.createElement( 'div' );
+            block_to_insert.classList.add("listaHtml");
+            block_to_insert.innerHTML = `${element.listarProd()}`;
+             
+            container_block = document.getElementById('productosHtml');
+
+            container_block.appendChild(block_to_insert);
+
+    });
+}
+
+const listarHtmlReversed = (products) => {
+
+    deleteHtmlList();
+    let block_to_insert;
+    let container_block;
+     
+    products.forEach(element => {
+            block_to_insert = document.createElement( 'div' );
+            block_to_insert.classList.add("listaHtml");
+            block_to_insert.innerHTML = `${element.listarProd()}`;
+             
+            container_block = document.getElementById('productosHtml');
+            
+            container_block.prepend(block_to_insert);
+    });
+}
+
+const deleteHtmlList = () => {
+    const elements = document.getElementsByClassName('listaHtml');
+    while(elements.length > 0){
+    elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+
     

@@ -27,7 +27,7 @@ export default class Product{
     }
 
     listarProd(){
-        return `Código: ${this._codigo}, Nombre: ${this._nombre}, Cantidad: ${this._cantidad}, Costo: ${this._costo}, Siguiente:  `
+        return `Código: ${this._codigo}, Nombre: ${this._nombre}, Cantidad: ${this._cantidad}, Costo: ${this._costo}, Total: ${this.getTotal()}, Siguiente:`
         
     }
 
